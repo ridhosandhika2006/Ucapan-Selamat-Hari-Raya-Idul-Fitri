@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Hari Raya Idul Fitri</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #2c3e50, #27ae60);
+            color: white;
+        }
+        .loading-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .loading-screen h1 {
+            font-size: 30px;
+            color: #27ae60;
+        }
+        .hidden {
+            display: none;
+        }
+        .content {
+            margin-top: 50px;
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 500px;
+        }
+        .card h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .navigation {
+            margin-top: 10px;
+        }
+        .nav-btn {
+            background: white;
+            color: #27ae60;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .footer {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #ddd;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="loading">
+        <h1> Sabar bang lagi Loading...</h1>
+    </div><div class="content hidden" id="content">
+    <div class="slider">
+        <div class="slides" id="slides">
+            <div class="slide card">
+                <h1>Selamat Hari Raya Idul Fitri</h1>
+                <p>Mohon maaf lahir dan batin</p>
+            </div>
+            <div class="slide card">
+                <h1>Pantun 1</h1>
+                <p>Burung merpati terbang ke langit,
+                Membawa pesan indah nan suci,
+                Hari yang fitri telah mendekat,
+                Maafkan salah dari hati.</p>
+            </div>
+            <div class="slide card">
+                <h1>Pantun 2</h1>
+                <p>Ke pasar beli buah mangga,
+                Tak lupa beli durian,
+                Jika ada kata yang salah,
+                Mohon maaf dengan keikhlasan.</p>
+            </div>
+        </div>
+    </div>
+    <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">Sebelumnya</button>
+        <button class="nav-btn" onclick="nextSlide()">Berikutnya</button>
+    </div>
+    <div class="footer">
+        <p> studioofficialridho 2025 || Website Saya: <a href="https://studioofficialridho.github.io/Website-Portofolio/">studioofficialridho klik</a></p>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+    function showSlide(index) {
+        const slides = document.getElementById('slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        if (index >= totalSlides) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = totalSlides - 1;
+        } else {
+            currentIndex = index;
+        }
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
+    setTimeout(() => {
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('content').classList.remove('hidden');
+    }, 3000);
+</script>
+
+</body>
+</html>
